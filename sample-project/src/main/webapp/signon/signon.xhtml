@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:hersa="http://java.sun.com/jsf/composite/tags">
+	<h:head>
+		<title>#{clientContext.client.name} - Log In</title>
+		<link href="https://fonts.googleapis.com/css?family=Pangolin|Roboto+Condensed" 
+		  rel="stylesheet"/>
+		  <link href="../resources/css/commoncss/login.css" 
+		  rel="stylesheet"/>
+	</h:head>
+	<h:body style="background: url(../themes/#{clientContext.client.clientId}/resources/images/login_background.jpg) no-repeat fixed center; background-size: cover; " >
+		<div id="login" align="center">
+			<p:messages showDetail="true" autoUpdate="true" closable="true" />
+			<hersa:login headerLabel="#{clientContext.client.name} - Log In"
+						 userNameLabel="Username"
+						 myLoginBean="#{signOnBean}"
+						 loginAction="#{signOnBean.doSignOn}" />
+		</div>
+	</h:body>
+</html>

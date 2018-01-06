@@ -1,0 +1,99 @@
+@CHARSET "ISO-8859-1";
+body{
+	background-color: silver;
+}
+#indexMainPanel{
+	background-color: yellow;
+}
+#guest{
+	text-align:right;
+}
+#register{
+	text-align:left;
+}
+#newBtn{
+	margin-bottom:10px;
+}
+.ui-panel.newUserInfoPanel{
+	margin-bottom:15px;
+}
+
+.leftColumn{
+	float:left;
+	width:33%;
+	height:auto;
+}
+.rightColumn{
+	float:left;
+	width:33%;
+	height:auto;
+	
+}
+.actionBtn{
+	width:auto;
+	min-width:200px;
+}
+.cancelBtn{
+	width:auto;
+	min-width:200px;
+}
+.deleteColumn {
+	width:20px;
+}
+.lockedColumn{
+	width:80px;		
+}
+.togglerColumn{
+	width:16px;	
+}
+
+
+	@media screen and (max-width: 600px) {
+	    body {
+	        margin:0;
+			padding:0;
+	    }
+	  #guest{
+			
+		}
+	  #register{
+			
+		}
+		#newBtn{
+		margin-bottom:10px;
+		}
+		.ui-panel.newUserInfoPanel{
+			margin-bottom:15px;
+			height:auto;
+		}
+	
+		.leftColumn{
+			float:left;
+			width:99%;
+			height:auto;
+		}
+		.rightColumn{
+			float:left;
+			width:99%;
+			height:auto;
+		}
+		.actionBtn {
+			width: auto;
+			min-width: 100%;
+		}
+		.cancelBtn {
+			width: auto;
+			min-width: 100%;
+		}
+		.deleteColumn{
+			
+		}
+		.lockedColumn{
+		
+		}
+		.togglerColumn{
+			
+		}	
+	
+}
+
