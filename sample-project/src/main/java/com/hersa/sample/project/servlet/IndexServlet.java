@@ -34,13 +34,13 @@ public class IndexServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 		ClientContext clientContext = (ClientContext) applicationContext.getBean("clientContext");
-		boolean welcome = clientContext.getClientSettings().isDispWelcomePage();
+//		boolean welcome = clientContext.getClientSettings().isDispWelcomePage();
+		boolean welcome = clientContext.getDisplayWelcomePage().getBooleanValue();
 		if (welcome) {
 			response.sendRedirect("themes/" + clientContext.getClient().getClientId()+ "/pages/index.xhtml");
 		}else {
 			response.sendRedirect("signon/signon.xhtml");
 		}
-		
 	}
 
 	/**

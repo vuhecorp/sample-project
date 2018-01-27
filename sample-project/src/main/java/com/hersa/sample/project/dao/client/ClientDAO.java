@@ -7,9 +7,6 @@ import java.util.List;
 
 
 public interface ClientDAO {
-	
-
-	
 	public void setConnection(Connection connection);
 	public Connection getConnection();
 	public List<Client> retrieveClientById(long id) throws SQLException;

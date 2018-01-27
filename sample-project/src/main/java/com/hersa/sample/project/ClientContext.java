@@ -8,12 +8,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
-
 import com.hersa.sample.project.bom.client.ClientManager;
-import com.hersa.sample.project.bom.clientsettings.ClientSettings;
-import com.hersa.sample.project.bom.clientsettings.ClientSettingsManager;
+import com.hersa.sample.project.bom.setting.SettingManager;
 import com.hersa.sample.project.dao.client.Client;
+import com.hersa.sample.project.dao.setting.Setting;
 import com.hersa.sample.project.utils.Constants;
 
 @ManagedBean
@@ -21,7 +19,7 @@ import com.hersa.sample.project.utils.Constants;
 public class ClientContext {
 	private static ClientContext instance = null;
 	private Client client;
-	private ClientSettings clientSettings;
+	private Setting displayWelcomePage;
 	
 	public ClientContext() {
 		initializeClientContext();
@@ -29,14 +27,14 @@ public class ClientContext {
 
 	private void initializeClientContext() {
 		ClientManager cm = new ClientManager();
-		ClientSettingsManager csm = new ClientSettingsManager();
+		SettingManager sm = new SettingManager();
 		String clientId = null;
 			
 		try {
 			Context context = new InitialContext();
 			clientId = (String) context.lookup(Constants.APPLICATON_CLIENT);
 			this.client = cm.retrieveClientByClientId(clientId);
-			this.clientSettings = csm.retrieveClientSettingsByClientId(clientId);
+			this.displayWelcomePage = sm.getSettingById(clientId, 1);
 			
 		} catch (NamingException e) {
 			// TODO Auto-generated catch block
@@ -63,12 +61,12 @@ public class ClientContext {
 		return instance;
 	}
 
-	public ClientSettings getClientSettings() {
-		return clientSettings;
+	public Setting getDisplayWelcomePage() {
+		return displayWelcomePage;
 	}
 
-	public void setClientSettings(ClientSettings clientSettings) {
-		this.clientSettings = clientSettings;
+	public void setDisplayWelcomePage(Setting displayWelcomePage) {
+		this.displayWelcomePage = displayWelcomePage;
 	}
 
 }

@@ -2,7 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>sample-project</display-name>
 <welcome-file-list>
-    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>pageload.xhtml</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
@@ -55,7 +55,7 @@
 		</description>
     <env-entry-name>configuration/applicationClient</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>10745</env-entry-value>
+    <env-entry-value>10760</env-entry-value>
   </env-entry>
   <env-entry>
     <description>

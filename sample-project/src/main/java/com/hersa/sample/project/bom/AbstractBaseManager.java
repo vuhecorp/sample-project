@@ -2,10 +2,14 @@ package com.hersa.sample.project.bom;
 
 import java.sql.Connection;
 
+import com.hersa.sample.project.dao.basesetting.BaseSettingDAO;
+import com.hersa.sample.project.dao.basesetting.BaseSettingDAOImpl;
 import com.hersa.sample.project.dao.client.ClientDAO;
 import com.hersa.sample.project.dao.client.ClientDAOImpl;
-import com.hersa.sample.project.dao.clientsettings.ClientSettingsDAO;
-import com.hersa.sample.project.dao.clientsettings.ClientSettingsDAOImpl;
+import com.hersa.sample.project.dao.clientsettingsview.ClientSettingsViewDAO;
+import com.hersa.sample.project.dao.clientsettingsview.ClientSettingsViewDAOImpl;
+import com.hersa.sample.project.dao.setting.SettingDAO;
+import com.hersa.sample.project.dao.setting.SettingDAOImpl;
 import com.hersa.sample.project.dao.user.UserDAO;
 import com.hersa.sample.project.dao.user.UserDAOImpl;
 import com.hersa.sample.project.dao.usersignon.UserSignOnDAO;
@@ -48,8 +52,26 @@ public class AbstractBaseManager {
 		return dao;
 	}
 	
-	public ClientSettingsDAO getClientSettingsDAO() {
-		ClientSettingsDAO dao = new ClientSettingsDAOImpl(); 
+	public BaseSettingDAO getBaseSettingDAO() {
+		BaseSettingDAO dao = new BaseSettingDAOImpl(); 
+		dao.setConnection(getConnectionProvider());
+		if (connection != null) {
+			dao.setConnection(connection);
+		}
+		return dao;
+	}
+	
+	public ClientSettingsViewDAO getClientSettingsViewDAO() {
+		ClientSettingsViewDAO dao = new ClientSettingsViewDAOImpl(); 
+		dao.setConnection(getConnectionProvider());
+		if (connection != null) {
+			dao.setConnection(connection);
+		}
+		return dao;
+	}
+	
+	public SettingDAO getSettingDAO() {
+		SettingDAO dao = new SettingDAOImpl(); 
 		dao.setConnection(getConnectionProvider());
 		if (connection != null) {
 			dao.setConnection(connection);
