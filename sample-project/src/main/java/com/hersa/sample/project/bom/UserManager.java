@@ -24,7 +24,7 @@ public class UserManager extends AbstractBaseManager{
 	public UserManager(){
 		 
 	}
-	public User getUserByUsername(String email){
+	public User getUserByUsername(String email) throws Exception{
 		List<User> list = this.getUserDAO().retrieveUserByEmail(email);
 		 User user = new User();
 		 if (list.size() == 1) {
@@ -32,6 +32,8 @@ public class UserManager extends AbstractBaseManager{
 				user = user1;
 				return user;
 			}
+		}else if (list.isEmpty()) {
+			throw new Exception("Username not found.");
 		}
 		 return null;
 	}

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,7 +21,8 @@ import com.hersa.sample.project.test.Triangle;
 @WebServlet("/StartupServlet")
 public class StartupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	@Autowired
+	private ApplicationContext applicationContext;   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,13 +36,13 @@ public class StartupServlet extends HttpServlet {
 	 */
 	public void init(ServletConfig config) throws ServletException {
 		try {
-			ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
-			@SuppressWarnings("unused")
-			ClientContext clientContext = (ClientContext) applicationContext.getBean("clientContext");
+			
+			/*ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
+			@SuppressWarnings("unused")*/
+			ClientContext clientContext = (ClientContext) applicationContext.getBean("clientContext", ClientContext.class);
 		} catch (Exception e) {
 			System.out.println("An error occured while configuring client settings.");
 		}
-		
 	}
 
 	/**

@@ -92,4 +92,10 @@ public class User extends SystemUser implements Serializable{
 		return user;
 	}
 
+	public boolean isAdmin() {
+		if (role.toLowerCase().contains("admin")) {
+			return true;
+		}
+		return false;
+	}
 }

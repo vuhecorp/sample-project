@@ -53,13 +53,17 @@ public class UserSignOnPage implements Serializable{
 			session.setAttribute("User", user);
 			FacesContext.getCurrentInstance()
 			.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Success!"));
-			if (user.getRole().equalsIgnoreCase("admin")) {
+			
+			
+			
+			if (user.getRole().toLowerCase().contains("admin")) {
 				return "/private/admin/adminWelcome?faces-redirect=true";
-			}else if(user.getRole().equalsIgnoreCase("sysadmin")){
-				return "/private/sysadmin/sysadminWelcome?faces-redirect=true";
 			}else{
 				return "/private/user/userWelcome?faces-redirect=true";
 			}
+			
+			
+			
 		}else{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Info", "Invalid Credentials."));
 			return "";

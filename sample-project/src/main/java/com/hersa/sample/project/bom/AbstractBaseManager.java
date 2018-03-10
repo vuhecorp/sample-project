@@ -8,6 +8,8 @@ import com.hersa.sample.project.dao.client.ClientDAO;
 import com.hersa.sample.project.dao.client.ClientDAOImpl;
 import com.hersa.sample.project.dao.clientsettingsview.ClientSettingsViewDAO;
 import com.hersa.sample.project.dao.clientsettingsview.ClientSettingsViewDAOImpl;
+import com.hersa.sample.project.dao.permissionview.PermissionViewDAO;
+import com.hersa.sample.project.dao.permissionview.PermissionViewDAOImpl;
 import com.hersa.sample.project.dao.setting.SettingDAO;
 import com.hersa.sample.project.dao.setting.SettingDAOImpl;
 import com.hersa.sample.project.dao.user.UserDAO;
@@ -63,6 +65,14 @@ public class AbstractBaseManager {
 	
 	public ClientSettingsViewDAO getClientSettingsViewDAO() {
 		ClientSettingsViewDAO dao = new ClientSettingsViewDAOImpl(); 
+		dao.setConnection(getConnectionProvider());
+		if (connection != null) {
+			dao.setConnection(connection);
+		}
+		return dao;
+	}
+	public PermissionViewDAO getPermissionViewDAO() {
+		PermissionViewDAO dao = new PermissionViewDAOImpl(); 
 		dao.setConnection(getConnectionProvider());
 		if (connection != null) {
 			dao.setConnection(connection);

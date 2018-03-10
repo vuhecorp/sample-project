@@ -2,21 +2,20 @@ package com.hersa.sample.project;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class AccessBO {
 	private String header;
 	private String message;
 	
 	public AccessBO() {
-		
+		this.header = "Unauthorized Acess";
+		this.message = "You are not allowed to access this resource.";
 	}
 
 	public String getHeader() {
-		if (message.isEmpty()) {
-			return "Please log in";
-		}
 		return header;
 	}
 
@@ -25,9 +24,6 @@ public class AccessBO {
 	}
 
 	public String getMessage() {
-		if (header.isEmpty()) {
-			return "Unauthorized Access";
-		}
 		return message;
 	}
 

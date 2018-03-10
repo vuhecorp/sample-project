@@ -8,6 +8,10 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 import com.hersa.sample.project.bom.client.ClientManager;
 import com.hersa.sample.project.bom.setting.SettingManager;
 import com.hersa.sample.project.dao.client.Client;
@@ -16,7 +20,9 @@ import com.hersa.sample.project.utils.Constants;
 
 @ManagedBean
 @ApplicationScoped
-public class ClientContext {
+public class ClientContext implements ApplicationContextAware{
+	
+	private ApplicationContext applicationContext;
 	private static ClientContext instance = null;
 	private Client client;
 	private Setting displayWelcomePage;
@@ -67,6 +73,12 @@ public class ClientContext {
 
 	public void setDisplayWelcomePage(Setting displayWelcomePage) {
 		this.displayWelcomePage = displayWelcomePage;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.applicationContext = applicationContext;
+		
 	}
 
 }

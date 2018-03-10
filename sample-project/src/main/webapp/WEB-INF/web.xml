@@ -24,6 +24,31 @@
     <servlet-class>com.hersa.sample.project.servlet.StartupServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <!-- <servlet>
+    <servlet-name>spring-dispatcher</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+          <param-name>contextConfigLocation</param-name>
+          <param-value>classpath:spring2.xml</param-value>
+        </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet> -->
+   <servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/dispatcher-servlet.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
@@ -68,10 +93,8 @@
   <session-config>
     <session-timeout>10</session-timeout>
   </session-config>
-  <listener>
+<!--  <listener>
     <listener-class>com.sun.faces.config.ConfigureListener</listener-class>
 </listener>
- <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-</listener>
+ -->
 </web-app>

@@ -56,16 +56,10 @@ public class AuthenticationFilter implements Filter {
 			
 			if (uri.contains("/private/")) {
 				if (loggedIn) {
-					if (uri.contains("/sysadmin/")){
-						if (!sessionUser.getRole().equalsIgnoreCase("sysadmin")) {
-							this.context.log("Unauthorized access request");
-								res.sendRedirect(root + "/sysaccess.xhtml");}}
-						if (uri.contains("/admin/")){
-							if (sessionUser.getRole().equalsIgnoreCase("sysadmin")) {
-								
-							}else if (!sessionUser.getRole().equalsIgnoreCase("admin")) {
-								this.context.log("Unauthorized access request");
-								res.sendRedirect(root + "/private/user/userWelcome.xhtml");}}
+					if (uri.contains("/admin/") && !sessionUser.isAdmin()){
+						this.context.log("Unauthorized access request");
+						res.sendRedirect(root + "/access.xhtml");
+					}
 				}else{
 					this.context.log("Unauthorized access request");
 					res.sendRedirect(root + "/access.xhtml");

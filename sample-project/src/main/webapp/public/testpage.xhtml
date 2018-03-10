@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+	<h:body>
+		<ui:composition  template="${pageContext.request.contextPath}/templates/publicmaintemplate.xhtml"> 
+		<ui:define name="title">Public Home</ui:define>
+			<ui:define name="topcontent">
+				<p:outputLabel value="#{testAdminPage.welcome}"/>
+				<p:outputLabel value="#{testAdminPage.pageAccessLevel}"/>
+				<p:outputLabel value="#{testAdminPage.user.userName}"/>
+				<p:dataTable value="#{testAdminPage.userPermissions}"
+						     var="permission">
+					<p:column>
+						<p:outputLabel value="#{permission.permissionName}"/>
+					</p:column>
+				</p:dataTable>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

@@ -6,7 +6,7 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
    
-	<context:component-scan base-package="com.hersa.sample.project"/>
+	<!-- <context:component-scan base-package="com.hersa.sample.project"/> -->
 	<bean id="triangle" class="com.hersa.sample.project.test.Triangle"/>
 	<bean id="clientContext" class="com.hersa.sample.project.ClientContext" scope="singleton"/>
 	<bean id="accessBean" class="com.hersa.sample.project.AccessBO" scope="request"/>

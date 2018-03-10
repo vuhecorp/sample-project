@@ -48,6 +48,7 @@ public class AuthenticationManager {
 					}
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				throw e;
 			}
 			if (user != null && userSignon != null) {

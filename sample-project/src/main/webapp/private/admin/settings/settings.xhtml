@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:ui="http://java.sun.com/jsf/facelets" 
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<ui:composition template="${pageContext.request.contextPath}/templates/privatemaintemplate.xhtml">
+		<ui:define name="title">Settings</ui:define>
+		<ui:define name="crums">Settings ></ui:define>	
+		<ui:define name="topcontent">
+		<p:panel id="settingsMainPanel">
+			<h:form id="settingsForm">
+				<div class="card-w-title">
+					<h2><p:outputLabel value="#{settingLabelBean.heading}"/></h2>
+				</div>
+				<div id="description">
+					This is the description
+				</div>
+				<div id="content" class="ui-g">
+					<div class="ui-g-12 ui-md-12 ui-lg-5">
+						<p:dataTable id="settingsTable"
+									 reflow="true"
+								 	 widgetVar="settingsTableWidget"
+								 	 value="#{settingsBean.allClientSettings}"
+								 	 var="setting">
+							<f:facet name="header">
+								<p:outputLabel value="#{settingLabelBean.settingsTableHeader}"/>
+							</f:facet>	 	 
+							<p:column headerText="Setting Name">
+								<p:outputLabel value="#{setting.label}"/>
+							</p:column>
+							<p:column headerText="Value">
+								<p:outputLabel value="#{setting.value}"/>
+							</p:column>
+							<p:column>
+								<div align="center">
+									<p:commandButton value="edit" update="settingsForm:editPanel">
+										<f:setPropertyActionListener value="#{setting}" target="#{settingsBean.selectedSetting}"/>
+									</p:commandButton>
+								</div>
+							</p:column>
+						</p:dataTable>
+					</div>
+					<div class="ui-g-12 ui-md-12 ui-lg-7" style="min-height:300px;">
+						<div style="border: 1px solid silver;">
+							<div align="center">
+								<h3>Edit Setting</h3>
+							</div>
+							<p:outputPanel id="editPanel" style="padding:10px;">
+								<div >
+									<p:outputLabel value="#{settingLabelBean.editSettingMessage}"
+												   rendered="#{settingsBean.selectedSetting.settingId lt 1}"/>
+								</div>
+								<div>
+									<p:outputLabel value="#{settingsBean.selectedSetting.name}"/>
+								</div>
+							</p:outputPanel>
+						</div>
+					</div>
+				</div>
+				<p:outputPanel>
+					<p:dataTable value="#{settingsBean.allAdminSettings}"
+								 var = "adminSetting">
+						<p:column>
+							<p:outputLabel value="#{adminSetting.value}"/>
+						</p:column>
+					</p:dataTable>
+				</p:outputPanel>
+			</h:form>
+		</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
